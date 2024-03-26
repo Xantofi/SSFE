@@ -13,22 +13,22 @@
     <header class="container px-0">
       <nav class="navbar navbar-expand-sm border">
         <div class="col-8 ps-4">
-          <i class="bi bi-shop"></i>
+          <i class="bi bi-shop big"></i>
         </div>
         <div class="col-4 pe-5">
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="#">Home</a>
             </li>
-            <p>|</p>
+            <p class="mt-2">|</p>
             <li class="nav-item">
               <a class="nav-link" href="#">About</a>
             </li>
-            <p>|</p>
+            <p class="mt-2">|</p>
             <li class="nav-item">
               <a class="nav-link" href="#">Shop</a>
             </li>
-            <p>|</p>
+            <p class="mt-2">|</p>
             <li class="nav-item">
               <a class="nav-link" href="#">Help</a>
             </li>
@@ -44,70 +44,164 @@
     <div class="container mx-0">
       <div class="row">
         <div class="col-4 pt-5 border">
-          <div class="w-50">
-            <button class="btn btn-secondary text-white filters">Filter</button>
+          <div>
+            <div class="col-4">
+              <button class="btn btn-secondary text-white filters mb-3 w-100">
+                Filter
+              </button>
+            </div>
+            <div class="col-4">
+              <button class="btn btn-secondary text-white filters mb-3 w-100">
+                Reset Filter
+              </button>
+            </div>
           </div>
-          <div class="w-50">
-            <button class="btn btn-secondary text-white filters">
-              Reset Filter
-            </button>
-          </div>
-          <h4 class="mt-"><em>Products</em></h4>
+          <h4 class="mb-4"><em>Products</em></h4>
           <div class="listado">
             <ul>
               <li class="d-flex justify-content-between">
                 <p>Product 1</p>
                 <i class="bi bi-chevron-right"></i>
               </li>
-              <hr />
+              <hr class="mb-4 mt-2" />
               <li class="d-flex justify-content-between">
                 <p>Product 2</p>
                 <i class="bi bi-chevron-right"></i>
               </li>
-              <hr />
+              <hr class="mb-4 mt-2" />
               <li class="d-flex justify-content-between">
                 <p>Product 3</p>
                 <i class="bi bi-chevron-right"></i>
               </li>
-              <hr />
+              <hr class="mb-4 mt-2" />
               <li class="d-flex justify-content-between">
                 <p>Product 4</p>
                 <i class="bi bi-chevron-right"></i>
               </li>
-              <hr />
+              <hr class="mb-4 mt-2" />
               <li class="d-flex justify-content-between">
                 <p>Product 5</p>
                 <i class="bi bi-chevron-right"></i>
               </li>
-              <hr />
+              <hr class="mb-4 mt-2" />
+              <li class="d-flex justify-content-between">
+                <p>Product 6</p>
+                <i class="bi bi-chevron-right"></i>
+              </li>
+              <hr class="mb-4 mt-2" />
             </ul>
           </div>
         </div>
-        <div class="col-8 px-0 d-block">
-          <div class="border d-block">
-            <img src="../assets/Images/Si.jfif" alt="1" />
-            <h1 class="light">Product title</h1>
-            <div class="d-flex">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star"></i>
-              <i class="bi bi-star"></i>
-              <p class="space">5 Reviews</p>
+        <div class="col-8 px-0">
+          <div class="border d-flex">
+            <img src="../assets/Images/Si.jfif" alt="1" class="col-5" />
+            <div class="col">
+              <h1 class="fw-medium">Cerezas</h1>
+              <div class="d-flex">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
+                <i class="bi bi-star"></i>
+                <p class="space">5 Reviews</p>
+              </div>
+              <hr />
+              <h1 class="fw-normal">12€</h1>
+              <hr />
+              <p class="space">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+              <hr class="short" />
+              <button class="btn btn-secondary del-btn">Delete Item</button>
             </div>
-            <hr />
-            <h1 class="light">$1232</h1>
-            <hr />
-            <p class="space">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <hr class="short ms-4" />
-            <button class="btn btn-secondary del-btn ms-5">Delete Item</button>
           </div>
-          <div class="border">hola</div>
+
+          <div class="border">
+            <h1 class="display-5 text-center similares mt-4">
+              Similar Products
+            </h1>
+            <div class="d-flex justify-content-between mx-5">
+              <div id="elem_1" class="d-flex">
+                <img
+                  src="../assets/Images/manzanas.jfif"
+                  alt="2"
+                  class="col-4"
+                />
+                <div class="my-auto ms-2">
+                  <h3 class="fw-medium">Manzanas</h3>
+                  <div class="d-flex">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                  <p>2.14€</p>
+                </div>
+              </div>
+              <div id="elem_2" class="d-flex">
+                <img src="../assets/Images/Mango.jfif" alt="2" class="col-4" />
+                <div class="my-auto ms-2">
+                  <h3 class="fw-medium">Mangos</h3>
+                  <div class="d-flex">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                  <p>5.74€</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="border">
+            <h1 class="display-5 m-3">Reviews</h1>
+            <div class="d-flex" id="elem_3">
+              <i class="bi bi-person-circle big mx-5 my-auto"></i>
+              <div class="data my-auto">
+                <h5>Mike Peterson</h5>
+                <h6>February 11, 1996</h6>
+                <div class="d-flex">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                  <i class="bi bi-star"></i>
+                </div>
+              </div>
+              <p class="p-4 my-auto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+            <hr class="short ms-5" />
+            <div class="d-flex" id="elem_4">
+              <i class="bi bi-person-circle big mx-5 my-auto"></i>
+              <div class="data my-auto">
+                <h5>Alexander Patton</h5>
+                <h6>July 27, 1967</h6>
+                <div class="d-flex">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                  <i class="bi bi-star"></i>
+                </div>
+              </div>
+              <p class="p-4 my-auto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

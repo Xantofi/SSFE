@@ -1,16 +1,11 @@
-ul > p {
-  padding-top: 1%;
-}
 .container {
   min-width: 100% !important;
 }
 img {
-  float: left;
+  height: 100%;
 }
 .filters {
   border-radius: 0%;
-  min-width: 40%;
-  margin-bottom: 5%;
 }
 .del-btn {
   max-width: 20%;
@@ -20,9 +15,6 @@ img {
 .space {
   padding-left: 20px;
 }
-.light {
-  font-weight: normal;
-}
 .short {
   max-width: 15%;
 }
@@ -30,10 +22,12 @@ img {
   padding-left: 0%;
   width: 100%;
 }
-.listado hr {
-  margin-top: 5px;
-  margin-bottom: 25px;
-}
 .d-flex > i {
   float: right;
+}
+.big {
+  font-size: 4rem;
+}
+.data {
+  min-width: max-content;
 }
