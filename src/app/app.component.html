@@ -10,7 +10,7 @@
     <title>Ej_02</title>
   </head>
   <body>
-    <header class="container px-0">
+    <header class="px-0">
       <nav class="navbar navbar-expand-sm border">
         <div class="col-8 ps-4">
           <i class="bi bi-shop big"></i>
@@ -58,13 +58,13 @@
           </div>
           <h4 class="mb-4"><em>Products</em></h4>
           <div class="listado">
-            <ul>
+            <ul *ngFor="let product of jsonData; let index = index">
               <li class="d-flex justify-content-between">
-                <p>Product 1</p>
+                <p>Product {{ index + 1 }}</p>
                 <i class="bi bi-chevron-right"></i>
               </li>
               <hr class="mb-4 mt-2" />
-              <li class="d-flex justify-content-between">
+              <!--<li class="d-flex justify-content-between">
                 <p>Product 2</p>
                 <i class="bi bi-chevron-right"></i>
               </li>
@@ -89,78 +89,95 @@
                 <i class="bi bi-chevron-right"></i>
               </li>
               <hr class="mb-4 mt-2" />
-            </ul>
+            --></ul>
           </div>
         </div>
         <div class="col-8 px-0">
           <div class="border d-flex">
-            <img src="../assets/Images/Si.jfif" alt="1" class="col-5" />
+            <img [src]="currentImageRoute" [alt]="position" class="col-5" />
             <div class="col">
-              <h1 class="fw-medium">Cerezas</h1>
+              <h1 class="fw-medium">{{ currentProductName }}</h1>
               <div class="d-flex">
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star"></i>
                 <i class="bi bi-star"></i>
-                <p class="space">5 Reviews</p>
+                <p class="space">{{ currentNumReviews }} reviews</p>
               </div>
               <hr />
-              <h1 class="fw-normal">12€</h1>
+              <h1 class="fw-normal">{{ currentPrice + currentCurrency }}</h1>
               <hr />
               <p class="space">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                {{ currentDescription }}
               </p>
-              <hr class="short" />
+              <hr class="w-25" />
               <button class="btn btn-secondary del-btn">Delete Item</button>
             </div>
           </div>
 
-          <div class="border">
+          <div class="border" *ngIf="currentProduct.similarProducts">
             <h1 class="display-5 text-center similares mt-4">
               Similar Products
             </h1>
             <div class="d-flex justify-content-between mx-5">
-              <div id="elem_1" class="d-flex">
-                <img
-                  src="../assets/Images/manzanas.jfif"
-                  alt="2"
-                  class="col-4"
-                />
-                <div class="my-auto ms-2">
-                  <h3 class="fw-medium">Manzanas</h3>
-                  <div class="d-flex">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i>
+              <div
+                *ngFor="
+                  let simProd of currentProduct.similarProducts;
+                  let index = index
+                "
+              >
+                <div class="d-flex col-12 mb-4">
+                  <img
+                    [src]="
+                      '../assets/Images/' +
+                      currentSimilarProducts[index].product +
+                      '.jpg'
+                    "
+                    [alt]="index"
+                    class="col-4"
+                  />
+                  <div class="my-auto ms-2">
+                    <h3 class="fw-medium">
+                      {{ currentSimilarProducts[index].product }}
+                    </h3>
+                    <div class="d-flex">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star"></i>
+                      <i class="bi bi-star"></i>
+                    </div>
+                    <p>
+                      {{
+                        currentSimilarProducts[index].price +
+                          currentSimilarProducts[index].currency
+                      }}
+                    </p>
                   </div>
-                  <p>2.14€</p>
                 </div>
               </div>
-              <div id="elem_2" class="d-flex">
-                <img src="../assets/Images/Mango.jfif" alt="2" class="col-4" />
-                <div class="my-auto ms-2">
-                  <h3 class="fw-medium">Mangos</h3>
-                  <div class="d-flex">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i>
+              <!--
+                <div class="d-flex">
+                  <img src="../assets/Images/Mango.jfif" alt="2" class="col-4" />
+                  <div class="my-auto ms-2">
+                    <h3 class="fw-medium">Mangos</h3>
+                    <div class="d-flex">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star"></i>
+                      <i class="bi bi-star"></i>
+                    </div>
+                    <p>5.74€</p>
                   </div>
-                  <p>5.74€</p>
                 </div>
-              </div>
+              -->
             </div>
           </div>
-          <div class="border">
+          <div class="border" *ngIf="hasSimProds">
             <h1 class="display-5 m-3">Reviews</h1>
-            <div class="d-flex" id="elem_3">
+            <div class="d-flex">
               <i class="bi bi-person-circle big mx-5 my-auto"></i>
               <div class="data my-auto">
                 <h5>Mike Peterson</h5>
@@ -180,8 +197,8 @@
                 nisi ut aliquip ex ea commodo consequat.
               </p>
             </div>
-            <hr class="short ms-5" />
-            <div class="d-flex" id="elem_4">
+            <hr class="w-25 ms-5" />
+            <div class="d-flex">
               <i class="bi bi-person-circle big mx-5 my-auto"></i>
               <div class="data my-auto">
                 <h5>Alexander Patton</h5>
