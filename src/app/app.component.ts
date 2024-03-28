@@ -8,18 +8,16 @@ import { datosJson } from './products';
 })
 export class AppComponent {
   title = 'mperez_takeup';
-  jsonData = datosJson;
-  position = 3;
+  jsonData = [...datosJson];
+  position = 0; //Quitar lo que sobra
   currentProduct = this.jsonData[this.position];
-  currentNumReviews = this.currentProduct.reviews?.length;
-  currentProductName = this.currentProduct.product;
-  currentPrice = this.currentProduct.price;
-  currentCurrency = this.currentProduct.currency;
-  currentDescription = this.currentProduct.description;
-  currentImageRoute = '../assets/Images/' + this.currentProductName + '.jpg';
-  currentSimilarProducts = this.currentProduct.similarProducts;
+  currentImageRoute =
+    '../assets/Images/' + this.currentProduct.product + '.jpg';
+  stars = Math.trunc(this.currentProduct.rating);
 
-  hasSimProds =
-    this.currentSimilarProducts !== null &&
-    this.currentSimilarProducts.length !== 0;
+  updateProduct(product: any) {
+    this.currentProduct = product;
+    this.currentImageRoute =
+      '../assets/Images/' + this.currentProduct.product + '.jpg';
+  }
 }

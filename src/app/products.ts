@@ -36,7 +36,7 @@ export const datosJson = [
       {
         image: '',
         name: 'Homer J. Simpson',
-        raging: 5,
+        rating: 5,
         opinion:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
         date: 'Ayer por la tarde, 2023',
@@ -44,7 +44,7 @@ export const datosJson = [
       {
         image: '',
         name: 'Marge Simpson',
-        raging: 4,
+        rating: 4,
         opinion:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque.',
         date: 'La semana pasada, 2023',
@@ -88,7 +88,7 @@ export const datosJson = [
       {
         image: '',
         name: 'P. Escobar',
-        raging: 5,
+        rating: 5,
         opinion:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
         date: 'Ayer por la tarde, 2023',
@@ -96,7 +96,7 @@ export const datosJson = [
       {
         image: '',
         name: 'M.A. Nestle',
-        raging: 2,
+        rating: 2,
         opinion:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque.',
         date: 'La semana pasada, 2023',
@@ -132,7 +132,7 @@ export const datosJson = [
       {
         image: '',
         name: 'Stan Marsh',
-        raging: 1,
+        rating: 1,
         opinion:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.',
         date: 'Ayer por la tarde, 2023',
@@ -140,7 +140,7 @@ export const datosJson = [
       {
         image: '',
         name: 'Randy Marsh',
-        raging: 5,
+        rating: 5,
         opinion:
           'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque.',
         date: 'primer día, 2023',
