@@ -1,3 +1,28 @@
+export interface Producto {
+  product: string;
+  price: number;
+  currency: string;
+  rating: number;
+  description: string;
+  similarProducts:
+    | {
+        product: string;
+        price: number;
+        currency: string;
+        rating: number;
+        description: string;
+      }[];
+  reviews?:
+    | {
+        image: string;
+        name: string;
+        rating: number;
+        opinion: string;
+        date: string;
+      }[]
+    | null;
+}
+
 export const datosJson = [
   {
     product: 'Tomaco',

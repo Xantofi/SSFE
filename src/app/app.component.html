@@ -8,16 +8,12 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Home</a>
         </li>
-        <p class="mt-2">|</p>
-        <!--Mejor clase con border-->
         <li class="nav-item">
           <a class="nav-link" href="#">About</a>
         </li>
-        <p class="mt-2">|</p>
         <li class="nav-item">
           <a class="nav-link" href="#">Shop</a>
         </li>
-        <p class="mt-2">|</p>
         <li class="nav-item">
           <a class="nav-link" href="#">Help</a>
         </li>
@@ -35,37 +31,42 @@
     <div class="col-4 pt-5 border">
       <div>
         <div class="col-4">
-          <button class="btn btn-secondary text-white filters mb-3 w-100">
+          <button
+            class="btn btn-secondary text-white filters mb-3 w-100"
+            (click)="filterBtnIsActive()"
+          >
             Filter
           </button>
         </div>
         <div class="col-4">
-          <button class="btn btn-secondary text-white filters mb-3 w-100">
+          <button
+            class="btn btn-secondary text-white filters mb-3 w-100"
+            (click)="resetFilterBtnIsActive()"
+          >
             Reset Filter
           </button>
         </div>
       </div>
-      <h4 class="mb-4">
-        <em>Products</em
-        ><!--Cambiar a estilos-->
-      </h4>
+      <h4 class="mb-4 fst-italic">Products</h4>
       <div class="listado">
-        <ul *ngFor="let product of jsonData">
+        <ul *ngFor="let product of productList" class="ps-0">
           <li
             class="d-flex justify-content-between"
             (click)="updateProduct(product)"
           >
-            <!--pasarle el product-->
             <p>{{ product.product }}</p>
             <i class="bi bi-chevron-right"></i>
           </li>
-          <hr class="mb-4 mt-2" />
         </ul>
       </div>
     </div>
     <div class="col-8 px-0">
       <div class="border d-flex">
-        <img [src]="currentImageRoute" [alt]="position" class="col-5 m-4" />
+        <img
+          [src]="currentImageRoute"
+          [alt]="defoultPosition"
+          class="col-5 m-4"
+        />
         <div class="col">
           <h1 class="fw-medium">{{ currentProduct.product }}</h1>
           <div class="d-flex">
@@ -74,19 +75,23 @@
             <i class="bi bi-star-fill"></i>
             <i class="bi bi-star"></i>
             <i class="bi bi-star"></i>
-            <p class="space">{{ currentProduct.reviews?.length }} reviews</p>
+            <p class="ps-3">{{ currentProduct.reviews?.length }} reviews</p>
           </div>
           <hr />
           <h1 class="fw-normal">
             {{ currentProduct.price + currentProduct.currency }}
           </h1>
           <hr />
-          <p class="space">
-            <!--bootstrap-->
+          <p class="ps-4">
             {{ currentProduct.description }}
           </p>
           <hr class="w-25" />
-          <button class="btn btn-secondary del-btn col-6">Delete Item</button>
+          <button
+            class="btn btn-secondary del-btn col-6"
+            (click)="removeItem()"
+          >
+            Delete Item
+          </button>
         </div>
       </div>
       <div class="border" *ngIf="currentProduct.similarProducts.length">
@@ -134,7 +139,7 @@
             <div class="data my-auto">
               <h5>{{ review.name }}</h5>
               <h6>{{ review.date }}</h6>
-              <div class="d-flex">
+              <div>
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-fill"></i>

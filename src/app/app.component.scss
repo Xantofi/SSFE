@@ -12,19 +12,17 @@ img {
   min-width: auto;
   margin-bottom: 2%;
 }
-.space {
-  padding-left: 20px;
-}
-.listado ul {
-  padding-left: 0%;
-  width: 100%;
-}
-.d-flex > i {
-  float: right;
+.listado {
+  li {
+    border-bottom: 1px solid gray;
+  }
 }
 .big {
   font-size: 4rem;
 }
 .data {
   min-width: max-content;
+}
+.nav-item {
+  border-right: 1px solid black;
 }
