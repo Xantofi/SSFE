@@ -1,135 +1,26 @@
-<header class="px-0">
-  <nav class="navbar navbar-expand-sm border">
-    <div class="col-8 ps-4">
-      <i class="bi bi-shop big"></i>
-    </div>
-    <div class="col-4 pe-5">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Shop</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Help</a>
-        </li>
-        <li class="nav-item bg-dark">
-          <a class="nav-link text-white" href="#">
-            <i class="bi bi-cart3 text-white"></i> Your Cart
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
+<app-header></app-header>
 <div class="container mx-0">
   <div class="row">
     <div class="col-4 pt-5 border">
-      <div>
-        <div class="col-4">
-          <button
-            class="btn btn-secondary text-white filters mb-3 w-100"
-            (click)="filterBtnIsActive()"
-          >
-            Filter
-          </button>
-        </div>
-        <div class="col-4">
-          <button
-            class="btn btn-secondary text-white filters mb-3 w-100"
-            (click)="resetFilterBtnIsActive()"
-          >
-            Reset Filter
-          </button>
-        </div>
-      </div>
-      <h4 class="mb-4 fst-italic">Products</h4>
-      <div class="listado">
-        <ul *ngFor="let product of productList" class="ps-0">
-          <li
-            class="d-flex justify-content-between"
-            (click)="updateProduct(product)"
-          >
-            <p>{{ product.product }}</p>
-            <i class="bi bi-chevron-right"></i>
-          </li>
-        </ul>
-      </div>
+      <app-aside
+        [productList]="productList"
+        (filterBtnActive)="filterBtnIsActive()"
+        (resetFilterBtnActive)="resetFilterBtnIsActive()"
+        (updateProduct)="updateProduct($event)"
+      ></app-aside>
     </div>
     <div class="col-8 px-0">
-      <div class="border d-flex">
-        <img
-          [src]="currentImageRoute"
-          [alt]="defoultPosition"
-          class="col-5 m-4"
-        />
-        <div class="col">
-          <h1 class="fw-medium">{{ currentProduct.product }}</h1>
-          <div class="d-flex">
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star"></i>
-            <i class="bi bi-star"></i>
-            <p class="ps-3">{{ currentProduct.reviews?.length }} reviews</p>
-          </div>
-          <hr />
-          <h1 class="fw-normal">
-            {{ currentProduct.price + currentProduct.currency }}
-          </h1>
-          <hr />
-          <p class="ps-4">
-            {{ currentProduct.description }}
-          </p>
-          <hr class="w-25" />
-          <button
-            class="btn btn-secondary del-btn col-6"
-            (click)="removeItem()"
-          >
-            Delete Item
-          </button>
-        </div>
-      </div>
+      <app-principal
+        [imageRoute]="currentImageRoute"
+        [actualProduct]="currentProduct"
+        [allStars]="allStars"
+        (removeProduct)="removeItem()"
+      ></app-principal>
       <div class="border" *ngIf="currentProduct.similarProducts.length">
-        <h1 class="display-5 text-center similares mt-4">Similar Products</h1>
-        <div class="d-flex justify-content-between mx-5">
-          <div
-            *ngFor="
-              let simProd of currentProduct.similarProducts;
-              let index = index
-            "
-          >
-            <div class="d-flex col-12 mb-4">
-              <img
-                [src]="'../assets/Images/' + simProd.product + '.jpg'"
-                [alt]="index"
-                class="col-4"
-              />
-              <div class="my-auto ms-2">
-                <h3 class="fw-medium">
-                  {{ currentProduct.similarProducts[index].product }}
-                </h3>
-                <div class="d-flex">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star"></i>
-                  <i class="bi bi-star"></i>
-                </div>
-                <p>
-                  {{
-                    currentProduct.similarProducts[index].price +
-                      currentProduct.similarProducts[index].currency
-                  }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <app-similar-products
+          [actualProduct]="currentProduct"
+          [allStars]="allStars"
+        ></app-similar-products>
       </div>
       <div class="border" *ngIf="currentProduct.reviews?.length">
         <h1 class="display-5 m-3">Reviews</h1>
@@ -139,12 +30,8 @@
             <div class="data my-auto">
               <h5>{{ review.name }}</h5>
               <h6>{{ review.date }}</h6>
-              <div>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star"></i>
-                <i class="bi bi-star"></i>
+              <div class="d-flex">
+                <app-stars [allStars]="allStars"></app-stars>
               </div>
             </div>
             <p class="p-4 my-auto">

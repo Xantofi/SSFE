@@ -1,0 +1,30 @@
+<div>
+  <div class="col-4">
+    <button
+      class="btn btn-secondary text-white rounded-0 mb-3 w-100"
+      (click)="onFilterBtnActive()"
+    >
+      Filter
+    </button>
+  </div>
+  <div class="col-4">
+    <button
+      class="btn btn-secondary text-white rounded-0 mb-3 w-100"
+      (click)="onResetFilterBtnActive()"
+    >
+      Reset Filter
+    </button>
+  </div>
+</div>
+<h4 class="mb-4 fst-italic">Products</h4>
+<div class="listado">
+  <ul *ngFor="let product of productList" class="ps-0">
+    <li
+      class="d-flex justify-content-between"
+      (click)="onSelectedProduct(product)"
+    >
+      <p>{{ product.product }}</p>
+      <i class="bi bi-chevron-right"></i>
+    </li>
+  </ul>
+</div>

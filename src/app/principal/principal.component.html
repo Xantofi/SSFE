@@ -1,0 +1,29 @@
+<div class="border d-flex">
+  <img
+    [src]="imageRoute"
+    [alt]="actualProduct.product"
+    class="col-5 m-4 h-100"
+  />
+  <div class="col">
+    <h1 class="fw-medium">{{ actualProduct.product }}</h1>
+    <div class="d-flex">
+      <app-stars [allStars]="allStars"></app-stars>
+      <p class="ps-3">{{ actualProduct.reviews?.length }} reviews</p>
+    </div>
+    <hr />
+    <h1 class="fw-normal">
+      {{ actualProduct.price + actualProduct.currency }}
+    </h1>
+    <hr />
+    <p class="ps-4">
+      {{ actualProduct.description }}
+    </p>
+    <hr class="w-25" />
+    <button
+      class="btn btn-secondary rounded-2 del-btn col-6"
+      (click)="onRemoveItem()"
+    >
+      Delete Item
+    </button>
+  </div>
+</div>

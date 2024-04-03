@@ -1,17 +1,18 @@
+export interface iSimilarProduct {
+  product: string;
+  price: number;
+  currency: string;
+  rating: number;
+  description: string;
+}
+
 export interface Producto {
   product: string;
   price: number;
   currency: string;
   rating: number;
   description: string;
-  similarProducts:
-    | {
-        product: string;
-        price: number;
-        currency: string;
-        rating: number;
-        description: string;
-      }[];
+  similarProducts: iSimilarProduct[];
   reviews?:
     | {
         image: string;

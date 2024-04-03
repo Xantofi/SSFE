@@ -1,0 +1,9 @@
+<h1 class="display-5 text-center similares mt-4">Similar Products</h1>
+<div class="d-flex justify-content-between mx-5">
+  <div *ngFor="let simProd of actualProduct.similarProducts">
+    <app-sim-product
+      [simProd]="simProd"
+      [allStars]="allStars"
+    ></app-sim-product>
+  </div>
+</div>
