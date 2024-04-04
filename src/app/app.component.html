@@ -1,153 +1,35 @@
-<header class="px-0">
-  <nav class="navbar navbar-expand-sm border">
-    <div class="col-8 ps-4">
-      <i class="bi bi-shop big"></i>
-    </div>
-    <div class="col-4 pe-5">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <p class="mt-2">|</p>
-        <!--Mejor clase con border-->
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <p class="mt-2">|</p>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Shop</a>
-        </li>
-        <p class="mt-2">|</p>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Help</a>
-        </li>
-        <li class="nav-item bg-dark">
-          <a class="nav-link text-white" href="#">
-            <i class="bi bi-cart3 text-white"></i> Your Cart
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
+<app-header></app-header>
 <div class="container mx-0">
   <div class="row">
     <div class="col-4 pt-5 border">
-      <div>
-        <div class="col-4">
-          <button class="btn btn-secondary text-white filters mb-3 w-100">
-            Filter
-          </button>
-        </div>
-        <div class="col-4">
-          <button class="btn btn-secondary text-white filters mb-3 w-100">
-            Reset Filter
-          </button>
-        </div>
-      </div>
-      <h4 class="mb-4">
-        <em>Products</em
-        ><!--Cambiar a estilos-->
-      </h4>
-      <div class="listado">
-        <ul *ngFor="let product of jsonData">
-          <li
-            class="d-flex justify-content-between"
-            (click)="updateProduct(product)"
-          >
-            <!--pasarle el product-->
-            <p>{{ product.product }}</p>
-            <i class="bi bi-chevron-right"></i>
-          </li>
-          <hr class="mb-4 mt-2" />
-        </ul>
-      </div>
+      <app-aside
+        [productList]="productList"
+        (filterBtnActive)="filterBtnIsActive()"
+        (resetFilterBtnActive)="resetFilterBtnIsActive()"
+        (updateProduct)="updateProduct($event)"
+      ></app-aside>
     </div>
-    <div class="col-8 px-0">
-      <div class="border d-flex">
-        <img [src]="currentImageRoute" [alt]="position" class="col-5 m-4" />
-        <div class="col">
-          <h1 class="fw-medium">{{ currentProduct.product }}</h1>
-          <div class="d-flex">
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star"></i>
-            <i class="bi bi-star"></i>
-            <p class="space">{{ currentProduct.reviews?.length }} reviews</p>
-          </div>
-          <hr />
-          <h1 class="fw-normal">
-            {{ currentProduct.price + currentProduct.currency }}
-          </h1>
-          <hr />
-          <p class="space">
-            <!--bootstrap-->
-            {{ currentProduct.description }}
-          </p>
-          <hr class="w-25" />
-          <button class="btn btn-secondary del-btn col-6">Delete Item</button>
-        </div>
-      </div>
+    <!--Posible adaptacion a ngClass-->
+    <div
+      class="col-8 px-0"
+      [ngStyle]="{
+        'background-color': currentProduct.favourite ? '#505050' : 'transparent'
+      }"
+      [style.color]="currentProduct.favourite ? 'white' : 'black'"
+    >
+      <app-principal
+        [imageRoute]="currentImageRoute"
+        [actualProduct]="currentProduct"
+        [fav]="fav"
+        (removeProduct)="removeItem()"
+      ></app-principal>
       <div class="border" *ngIf="currentProduct.similarProducts.length">
-        <h1 class="display-5 text-center similares mt-4">Similar Products</h1>
-        <div class="d-flex justify-content-between mx-5">
-          <div
-            *ngFor="
-              let simProd of currentProduct.similarProducts;
-              let index = index
-            "
-          >
-            <div class="d-flex col-12 mb-4">
-              <img
-                [src]="'../assets/Images/' + simProd.product + '.jpg'"
-                [alt]="index"
-                class="col-4"
-              />
-              <div class="my-auto ms-2">
-                <h3 class="fw-medium">
-                  {{ currentProduct.similarProducts[index].product }}
-                </h3>
-                <div class="d-flex">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star"></i>
-                  <i class="bi bi-star"></i>
-                </div>
-                <p>
-                  {{
-                    currentProduct.similarProducts[index].price +
-                      currentProduct.similarProducts[index].currency
-                  }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <app-similar-products
+          [actualProduct]="currentProduct"
+        ></app-similar-products>
       </div>
       <div class="border" *ngIf="currentProduct.reviews?.length">
-        <h1 class="display-5 m-3">Reviews</h1>
-        <div *ngFor="let review of currentProduct.reviews">
-          <div class="d-flex">
-            <i class="bi bi-person-circle big mx-5 my-auto"></i>
-            <div class="data my-auto">
-              <h5>{{ review.name }}</h5>
-              <h6>{{ review.date }}</h6>
-              <div class="d-flex">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star"></i>
-                <i class="bi bi-star"></i>
-              </div>
-            </div>
-            <p class="p-4 my-auto">
-              {{ review.opinion }}
-            </p>
-          </div>
-          <hr class="w-25 ms-5" />
-        </div>
+        <app-reviews [actualProduct]="currentProduct"></app-reviews>
       </div>
     </div>
   </div>

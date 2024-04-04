@@ -1,3 +1,30 @@
+export interface iSimilarProduct {
+  product: string;
+  price: number;
+  currency: string;
+  rating: number;
+  description: string;
+}
+
+export interface Producto {
+  product: string;
+  price: number;
+  currency: string;
+  rating: number;
+  description: string;
+  favourite: boolean;
+  similarProducts: iSimilarProduct[];
+  reviews?:
+    | {
+        image: string;
+        name: string;
+        rating: number;
+        opinion: string;
+        date: string;
+      }[]
+    | null;
+}
+
 export const datosJson = [
   {
     product: 'Tomaco',
@@ -6,6 +33,7 @@ export const datosJson = [
     rating: 4.8,
     description:
       'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.',
+    favourite: false,
     similarProducts: [
       {
         product: 'Cafaina',
@@ -58,6 +86,7 @@ export const datosJson = [
     rating: 2.8,
     description:
       'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.',
+    favourite: false,
     similarProducts: [
       {
         product: 'Energy Milk',
@@ -110,6 +139,7 @@ export const datosJson = [
     rating: 5,
     description:
       'Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.',
+    favourite: false,
     similarProducts: [
       {
         product: 'Energy Milk',
@@ -154,6 +184,7 @@ export const datosJson = [
     rating: 3.5,
     description:
       'Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. ',
+    favourite: false,
     similarProducts: [],
     reviews: null,
   },
