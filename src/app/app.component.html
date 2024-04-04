@@ -9,37 +9,27 @@
         (updateProduct)="updateProduct($event)"
       ></app-aside>
     </div>
-    <div class="col-8 px-0">
+    <!--Posible adaptacion a ngClass-->
+    <div
+      class="col-8 px-0"
+      [ngStyle]="{
+        'background-color': currentProduct.favourite ? '#505050' : 'transparent'
+      }"
+      [style.color]="currentProduct.favourite ? 'white' : 'black'"
+    >
       <app-principal
         [imageRoute]="currentImageRoute"
         [actualProduct]="currentProduct"
-        [allStars]="allStars"
+        [fav]="fav"
         (removeProduct)="removeItem()"
       ></app-principal>
       <div class="border" *ngIf="currentProduct.similarProducts.length">
         <app-similar-products
           [actualProduct]="currentProduct"
-          [allStars]="allStars"
         ></app-similar-products>
       </div>
       <div class="border" *ngIf="currentProduct.reviews?.length">
-        <h1 class="display-5 m-3">Reviews</h1>
-        <div *ngFor="let review of currentProduct.reviews">
-          <div class="d-flex">
-            <i class="bi bi-person-circle big mx-5 my-auto"></i>
-            <div class="data my-auto">
-              <h5>{{ review.name }}</h5>
-              <h6>{{ review.date }}</h6>
-              <div class="d-flex">
-                <app-stars [allStars]="allStars"></app-stars>
-              </div>
-            </div>
-            <p class="p-4 my-auto">
-              {{ review.opinion }}
-            </p>
-          </div>
-          <hr class="w-25 ms-5" />
-        </div>
+        <app-reviews [actualProduct]="currentProduct"></app-reviews>
       </div>
     </div>
   </div>

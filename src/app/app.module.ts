@@ -8,11 +8,19 @@ import { PrincipalComponent } from './principal/principal.component';
 import { StarsComponent } from './stars/stars.component';
 import { SimilarProductsComponent } from './similar-products/similar-products.component';
 import { ReviewsComponent } from './reviews/reviews.component';
-import { ReviewComponent } from './review/review.component';
 import { SimProductComponent } from './sim-product/sim-product.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, AsideComponent, PrincipalComponent, StarsComponent, SimilarProductsComponent, ReviewsComponent, ReviewComponent, SimProductComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    AsideComponent,
+    PrincipalComponent,
+    StarsComponent,
+    SimilarProductsComponent,
+    ReviewsComponent,
+    SimProductComponent,
+  ],
   imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent],

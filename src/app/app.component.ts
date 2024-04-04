@@ -15,9 +15,12 @@ export class AppComponent {
   public currentProduct: Producto = this.productList[this.defoultPosition];
   public currentImageRoute =
     '../assets/Images/' + this.currentProduct.product + '.jpg';
-  private stars = new Array(5).fill('bi-star');
-  public allStars: string[] = this.fillStars(this.currentProduct.rating);
+  public fav!: boolean;
   private filtered = false;
+
+  ngOnInit() {
+    this.fav = this.currentProduct.favourite;
+  }
 
   public filterBtnIsActive() {
     this.filtered ? null : this.filterProducts();
@@ -30,7 +33,7 @@ export class AppComponent {
   public updateProduct(product: Producto) {
     this.currentProduct = product;
     this.currentImageRoute = '../assets/Images/' + product.product + '.jpg';
-    this.allStars = this.fillStars(product.rating);
+    this.fav = product.favourite;
   }
 
   public removeItem() {
@@ -41,21 +44,6 @@ export class AppComponent {
       (product) => product.product !== this.currentProduct.product
     );
     this.updateProduct(this.productList[this.defoultPosition]);
-  }
-
-  private fillStars(rating: number): string[] {
-    this.stars.fill('bi-star');
-    const fullStars = Math.trunc(rating);
-    this.stars.fill('bi-star-fill', 0, fullStars);
-
-    if (this.hasHalfStar(rating)) {
-      this.stars[fullStars] = 'bi-star-half';
-    }
-    return this.stars;
-  }
-
-  private hasHalfStar(rating: number): boolean {
-    return rating % 1 > 0;
   }
 
   private firstFilter(product: Producto) {

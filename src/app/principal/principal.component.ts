@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChange,
+} from '@angular/core';
 import { Producto } from '../products';
 
 @Component({
@@ -8,16 +14,17 @@ import { Producto } from '../products';
 })
 export class PrincipalComponent {
   @Input() imageRoute: string = '';
-  @Input() allStars!: string[];
   @Input() actualProduct!: Producto;
+  @Input() fav!: boolean;
   @Output() removeProduct = new EventEmitter<void>();
   @Output() sendRating = new EventEmitter<number>();
 
-  onRemoveItem() {
-    this.removeProduct.emit();
+  favouriteChangeState() {
+    this.fav = !this.fav;
+    this.actualProduct.favourite = this.fav;
   }
 
-  createStars(rating: number): void {
-    this.sendRating.emit(rating);
+  onRemoveItem() {
+    this.removeProduct.emit();
   }
 }
