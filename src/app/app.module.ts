@@ -9,6 +9,7 @@ import { StarsComponent } from './stars/stars.component';
 import { SimilarProductsComponent } from './similar-products/similar-products.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { SimProductComponent } from './sim-product/sim-product.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SimProductComponent } from './sim-product/sim-product.component';
     SimilarProductsComponent,
     ReviewsComponent,
     SimProductComponent,
+    MainComponent,
   ],
   imports: [BrowserModule],
   providers: [],
