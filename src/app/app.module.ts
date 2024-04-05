@@ -3,13 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { AsideComponent } from './aside/aside.component';
-import { PrincipalComponent } from './principal/principal.component';
-import { StarsComponent } from './stars/stars.component';
-import { SimilarProductsComponent } from './similar-products/similar-products.component';
-import { ReviewsComponent } from './reviews/reviews.component';
-import { SimProductComponent } from './sim-product/sim-product.component';
-import { MainComponent } from './main/main.component';
+import { AsideComponent } from './detail/aside/aside.component';
+import { PrincipalComponent } from './detail/principal/principal.component';
+import { StarsComponent } from './detail/stars/stars.component';
+import { SimilarProductsComponent } from './detail/similar-products/similar-products.component';
+import { ReviewsComponent } from './detail/reviews/reviews.component';
+import { SimProductComponent } from './detail/sim-product/sim-product.component';
+import { MainComponent } from './detail/main/main.component';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { datosJson } from '../products';
-import { type Producto } from '../products';
+import { datosJson } from '../../products';
+import { type Producto } from '../../products';
 
 @Component({
   selector: 'app-main',

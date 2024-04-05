@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Producto, iSimilarProduct } from '../products';
+import { Producto, iSimilarProduct } from '../../products';
 
 @Component({
   selector: 'app-sim-product',
