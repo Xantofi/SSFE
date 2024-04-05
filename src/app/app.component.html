@@ -4,6 +4,7 @@
     <div class="col-4 pt-5 border">
       <app-aside
         [productList]="productList"
+        [filtered]="filtered"
         (filterBtnActive)="filterBtnIsActive()"
         (resetFilterBtnActive)="resetFilterBtnIsActive()"
         (updateProduct)="updateProduct($event)"
@@ -13,9 +14,11 @@
     <div
       class="col-8 px-0"
       [ngStyle]="{
-        'background-color': currentProduct.favourite ? '#505050' : 'transparent'
+        'background-color': currentProduct.favourite
+          ? '#505050'
+          : 'transparent',
+        color: currentProduct.favourite ? 'white' : 'black'
       }"
-      [style.color]="currentProduct.favourite ? 'white' : 'black'"
     >
       <app-principal
         [imageRoute]="currentImageRoute"

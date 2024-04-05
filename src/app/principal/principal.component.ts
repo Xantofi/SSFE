@@ -19,12 +19,16 @@ export class PrincipalComponent {
   @Output() removeProduct = new EventEmitter<void>();
   @Output() sendRating = new EventEmitter<number>();
 
-  favouriteChangeState() {
+  public changeFavoutiteState() {
     this.fav = !this.fav;
-    this.actualProduct.favourite = this.fav;
+    this.updateFavouriteState();
   }
 
-  onRemoveItem() {
+  public onRemoveItem() {
     this.removeProduct.emit();
+  }
+
+  private updateFavouriteState() {
+    this.actualProduct.favourite = this.fav;
   }
 }

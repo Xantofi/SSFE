@@ -1,5 +1,5 @@
 <h1 class="display-5 m-3">Reviews</h1>
-<div *ngFor="let review of actualProduct.reviews">
+<div *ngFor="let review of actualProduct.reviews; let last = last" class="mb-4">
   <div class="d-flex">
     <i class="bi bi-person-circle big mx-5 my-auto"></i>
     <div class="data my-auto">
@@ -13,5 +13,7 @@
       {{ review.opinion }}
     </p>
   </div>
-  <hr class="w-25 ms-5" />
+  <div *ngIf="!last">
+    <hr class="w-25 ms-5" />
+  </div>
 </div>

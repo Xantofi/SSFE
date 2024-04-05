@@ -8,5 +8,4 @@ import { Producto, iSimilarProduct } from '../products';
 })
 export class SimProductComponent {
   @Input() simProd!: iSimilarProduct;
-  @Input() allStars!: string[];
 }

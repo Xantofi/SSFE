@@ -16,9 +16,9 @@ export class AppComponent {
   public currentImageRoute =
     '../assets/Images/' + this.currentProduct.product + '.jpg';
   public fav!: boolean;
-  private filtered = false;
+  public filtered = false;
 
-  ngOnInit() {
+  public ngOnInit() {
     this.fav = this.currentProduct.favourite;
   }
 

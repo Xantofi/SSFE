@@ -1,21 +1,16 @@
-<div>
-  <div class="col-4">
-    <button
-      class="btn btn-secondary text-white rounded-0 mb-3 w-100"
-      (click)="onFilterBtnActive()"
-    >
-      Filter
-    </button>
-  </div>
-  <div class="col-4">
-    <button
-      class="btn btn-secondary text-white rounded-0 mb-3 w-100"
-      (click)="onResetFilterBtnActive()"
-    >
-      Reset Filter
-    </button>
-  </div>
-</div>
+<button
+  class="btn btn-secondary filter-btns rounded-0 mb-3 d-block"
+  [class.activated]="filtered"
+  (click)="onFilterBtnActive()"
+>
+  Filter
+</button>
+<button
+  class="btn btn-secondary filter-btns rounded-0 mb-3"
+  (click)="onResetFilterBtnActive()"
+>
+  Reset Filter
+</button>
 <h4 class="mb-4 fst-italic">Products</h4>
 <div class="listado">
   <ul *ngFor="let product of productList" class="ps-0">

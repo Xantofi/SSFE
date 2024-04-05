@@ -8,5 +8,4 @@ import { type Producto } from '../products';
 })
 export class SimilarProductsComponent {
   @Input() actualProduct!: Producto;
-  @Input() allStars!: string[];
 }

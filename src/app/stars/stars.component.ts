@@ -8,21 +8,21 @@ import { Component, Input, SimpleChange } from '@angular/core';
 export class StarsComponent {
   @Input() rating!: number;
 
-  allStars!: string[];
-  levelOfRating!: string;
+  public levelOfRating!: string;
+  public allStars!: string[];
   private stars = new Array(5).fill('bi-star');
 
-  ngOnInit() {
+  public ngOnInit() {
     this.calculateLevel();
     this.allStars = this.fillStars(this.rating);
   }
 
-  ngOnChanges(changes: SimpleChange) {
+  public ngOnChanges(changes: SimpleChange) {
     this.calculateLevel();
     this.allStars = this.fillStars(this.rating);
   }
 
-  calculateLevel() {
+  private calculateLevel() {
     if (this.isLowLevel()) {
       this.levelOfRating = 'red';
     } else {

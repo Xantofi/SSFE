@@ -8,19 +8,20 @@ import { type Producto } from '../products';
 })
 export class AsideComponent {
   @Input() productList!: Producto[];
+  @Input() filtered!: boolean;
   @Output() filterBtnActive = new EventEmitter<void>();
   @Output() resetFilterBtnActive = new EventEmitter<void>();
   @Output() updateProduct = new EventEmitter<Producto>();
 
-  onFilterBtnActive(): void {
+  public onFilterBtnActive(): void {
     this.filterBtnActive.emit();
   }
 
-  onResetFilterBtnActive(): void {
+  public onResetFilterBtnActive(): void {
     this.resetFilterBtnActive.emit();
   }
 
-  onSelectedProduct(product: Producto): void {
+  public onSelectedProduct(product: Producto): void {
     this.updateProduct.emit(product);
   }
 }
