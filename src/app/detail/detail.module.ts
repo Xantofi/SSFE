@@ -7,6 +7,7 @@ import { StarsComponent } from '../detail/stars/stars.component';
 import { SimilarProductsComponent } from '../detail/similar-products/similar-products.component';
 import { ReviewsComponent } from '../detail/reviews/reviews.component';
 import { SimProductComponent } from '../detail/sim-product/sim-product.component';
+import { DetailRoutingModule } from './detail-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { SimProductComponent } from '../detail/sim-product/sim-product.component
     ReviewsComponent,
     SimProductComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, DetailRoutingModule],
   exports: [MainComponent],
 })
 export class DetailModule {}

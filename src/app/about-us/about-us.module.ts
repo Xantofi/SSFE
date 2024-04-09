@@ -4,6 +4,7 @@ import { SubscriptionComponent } from '../about-us/subscription/subscription.com
 import { MoreAboutUsComponent } from '../about-us/more-about-us/more-about-us.component';
 import { MoreInfoComponent } from '../about-us/more-info/more-info.component';
 import { AboutUsPageComponent } from '../about-us/about-us-page/about-us-page.component';
+import { AboutUsRoutingModule } from './about-us-routing.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { AboutUsPageComponent } from '../about-us/about-us-page/about-us-page.co
     MoreInfoComponent,
     AboutUsPageComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, AboutUsRoutingModule],
   exports: [AboutUsPageComponent],
 })
 export class AboutUsModule {}
