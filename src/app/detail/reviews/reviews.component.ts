@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Producto } from '../../products';
+import { Producto } from '../../interfaces/iProduct';
 
 @Component({
   selector: 'app-reviews',

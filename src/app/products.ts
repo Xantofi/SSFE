@@ -1,30 +1,3 @@
-export interface iSimilarProduct {
-  product: string;
-  price: number;
-  currency: string;
-  rating: number;
-  description: string;
-}
-
-export interface Producto {
-  product: string;
-  price: number;
-  currency: string;
-  rating: number;
-  description: string;
-  favourite: boolean;
-  similarProducts: iSimilarProduct[];
-  reviews?:
-    | {
-        image: string;
-        name: string;
-        rating: number;
-        opinion: string;
-        date: string;
-      }[]
-    | null;
-}
-
 export const datosJson = [
   {
     product: 'Tomaco',

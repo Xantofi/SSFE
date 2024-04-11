@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { datosJson } from '../../products';
-import { type Producto } from '../../products';
+import { Component, SimpleChanges } from '@angular/core';
+import { type Producto } from '../../interfaces/iProduct';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-main',
@@ -8,18 +8,34 @@ import { type Producto } from '../../products';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent {
-  private jsonData = [...datosJson];
-  public productList: Producto[] = this.jsonData;
-  private unfilteredList: Producto[] = this.jsonData;
+  public productList: Producto[] = [];
+  private unfilteredList: Producto[] = [];
   private defoultPosition = 0;
-  public currentProduct: Producto = this.productList[this.defoultPosition];
-  public currentImageRoute =
-    '../assets/Images/' + this.currentProduct.product + '.jpg';
+  public currentProduct!: Producto;
+  /*   public currentImageRoute =
+    '../assets/Images/' + this.currentProduct.product + '.jpg'; */
   public fav!: boolean;
   public filtered = false;
 
-  public ngOnInit() {
-    this.fav = this.currentProduct.favourite;
+  constructor(private productService: ProductService) {}
+
+  //this.fav = this.currentProduct.favourite;
+
+  ngOnInit() {
+    this.getProducts();
+    this.currentProduct = this.productList[this.defoultPosition];
+  }
+
+  getProducts() {
+    this.productService.products$.subscribe({
+      next: (data) => {
+        this.productList = data;
+      },
+    });
+  }
+
+  getCurrentProduct() {
+    this.productService.getCurrentProduct(this.defoultPosition);
   }
 
   public filterBtnIsActive() {
@@ -32,7 +48,7 @@ export class MainComponent {
 
   public updateProduct(product: Producto) {
     this.currentProduct = product;
-    this.currentImageRoute = '../assets/Images/' + product.product + '.jpg';
+    //this.currentImageRoute = '../assets/Images/' + product.product + '.jpg';
     this.fav = product.favourite;
   }
 

@@ -19,8 +19,8 @@
         color: currentProduct.favourite ? 'white' : 'black'
       }"
     >
+      <!--[imageRoute]="currentImageRoute"-->
       <app-principal
-        [imageRoute]="currentImageRoute"
         [actualProduct]="currentProduct"
         [fav]="fav"
         (removeProduct)="removeItem()"
