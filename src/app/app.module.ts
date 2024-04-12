@@ -5,7 +5,8 @@ import { AboutUsModule } from './about-us/about-us.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DateInterceptor } from './date.interceptor';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -16,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: DateInterceptor }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

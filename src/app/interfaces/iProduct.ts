@@ -7,6 +7,7 @@ export interface Producto {
   rating: number;
   description: string;
   favourite: boolean;
+  image: string;
   similarProducts: iSimilarProduct[];
   reviews?:
     | {

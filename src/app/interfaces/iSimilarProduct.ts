@@ -3,5 +3,6 @@ export interface iSimilarProduct {
   price: number;
   currency: string;
   rating: number;
+  image: string;
   description: string;
 }

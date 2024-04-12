@@ -12,30 +12,36 @@ export class MainComponent {
   private unfilteredList: Producto[] = [];
   private defoultPosition = 0;
   public currentProduct!: Producto;
-  /*   public currentImageRoute =
-    '../assets/Images/' + this.currentProduct.product + '.jpg'; */
+  public currentImageRoute = '';
   public fav!: boolean;
   public filtered = false;
 
   constructor(private productService: ProductService) {}
 
-  //this.fav = this.currentProduct.favourite;
-
   ngOnInit() {
     this.getProducts();
-    this.currentProduct = this.productList[this.defoultPosition];
   }
 
-  getProducts() {
-    this.productService.products$.subscribe({
-      next: (data) => {
-        this.productList = data;
-      },
+  private getProducts() {
+    this.productService.getProducts().subscribe((data) => {
+      this.productList = data;
+      this.unfilteredList = data;
+      this.setDefoultProduct();
+      this.setFavourite();
+      this.setImage();
     });
   }
 
-  getCurrentProduct() {
-    this.productService.getCurrentProduct(this.defoultPosition);
+  private setImage() {
+    this.currentImageRoute = this.currentProduct.image;
+  }
+
+  private setDefoultProduct() {
+    this.currentProduct = this.productList[this.defoultPosition];
+  }
+
+  private setFavourite() {
+    this.fav = this.currentProduct.favourite;
   }
 
   public filterBtnIsActive() {
@@ -48,7 +54,7 @@ export class MainComponent {
 
   public updateProduct(product: Producto) {
     this.currentProduct = product;
-    //this.currentImageRoute = '../assets/Images/' + product.product + '.jpg';
+    this.currentImageRoute = product.image;
     this.fav = product.favourite;
   }
 

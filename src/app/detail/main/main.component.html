@@ -19,10 +19,10 @@
         color: currentProduct.favourite ? 'white' : 'black'
       }"
     >
-      <!--[imageRoute]="currentImageRoute"-->
       <app-principal
         [actualProduct]="currentProduct"
         [fav]="fav"
+        [imageRoute]="currentImageRoute"
         (removeProduct)="removeItem()"
       ></app-principal>
       <div class="border" *ngIf="currentProduct.similarProducts.length">
