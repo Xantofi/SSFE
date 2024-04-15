@@ -4,8 +4,8 @@
       <app-aside
         [productList]="productList"
         [filtered]="filtered"
-        (filterBtnActive)="filterBtnIsActive()"
-        (resetFilterBtnActive)="resetFilterBtnIsActive()"
+        (filterBtnActive)="filterProductsByPrice()"
+        (resetFilterBtnActive)="resetPriceFilter()"
         (updateProduct)="updateProduct($event)"
       ></app-aside>
     </div>
@@ -23,7 +23,7 @@
         [actualProduct]="currentProduct"
         [fav]="fav"
         [imageRoute]="currentImageRoute"
-        (removeProduct)="removeItem()"
+        (removeProduct)="removeProduct()"
       ></app-principal>
       <div class="border" *ngIf="currentProduct.similarProducts.length">
         <app-similar-products

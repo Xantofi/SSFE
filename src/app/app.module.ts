@@ -17,7 +17,9 @@ import { DateInterceptor } from './date.interceptor';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: DateInterceptor }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: DateInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

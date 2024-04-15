@@ -22,43 +22,29 @@ export class MainComponent {
     this.getProducts();
   }
 
-  private getProducts() {
-    this.productService.getProducts().subscribe((data) => {
-      this.productList = data;
-      this.unfilteredList = data;
-      this.setDefoultProduct();
-      this.setFavourite();
-      this.setImage();
-    });
+  filterProductsByPrice() {
+    //this.filtered ?? this.filterProducts();
+    if (this.filtered) {
+      return;
+    }
+    this.filterProducts();
   }
 
-  private setImage() {
-    this.currentImageRoute = this.currentProduct.image;
+  resetPriceFilter() {
+    //this.filtered ? this.resetFilters() : null;
+    if (!this.filtered) {
+      return;
+    }
+    this.resetFilters();
   }
 
-  private setDefoultProduct() {
-    this.currentProduct = this.productList[this.defoultPosition];
-  }
-
-  private setFavourite() {
-    this.fav = this.currentProduct.favourite;
-  }
-
-  public filterBtnIsActive() {
-    this.filtered ? null : this.filterProducts();
-  }
-
-  public resetFilterBtnIsActive() {
-    this.filtered ? this.resetFilters() : null;
-  }
-
-  public updateProduct(product: Producto) {
+  updateProduct(product: Producto) {
     this.currentProduct = product;
     this.currentImageRoute = product.image;
     this.fav = product.favourite;
   }
 
-  public removeItem() {
+  removeProduct() {
     this.productList = this.productList.filter(
       (product) => product.product !== this.currentProduct.product
     );
@@ -67,18 +53,41 @@ export class MainComponent {
     );
     this.updateProduct(this.productList[this.defoultPosition]);
   }
+  private getProducts() {
+    this.productService.getProducts().subscribe((products) => {
+      this.initializeProductData(products);
+    });
+  }
 
-  private firstFilter(product: Producto) {
-    return product.price > 100 && product.price <= 1000;
+  private initializeProductData(products: Producto[]) {
+    this.productList = products;
+    this.unfilteredList = products;
+    this.currentProduct = this.productList[this.defoultPosition];
+    this.currentImageRoute = this.currentProduct.image;
+    this.fav = this.currentProduct.favourite;
+  }
+
+  private priceFilter(product: Producto) {
+    const minValue = 100;
+    const maxValue = 1000;
+    return product.price > minValue && product.price <= maxValue;
   }
 
   private filterProducts() {
     this.productList = this.productList.filter((prod) =>
-      this.firstFilter(prod)
+      this.priceFilter(prod)
     );
-    this.productList = this.productList.sort(this.sortByPrice());
-    this.filtered = !this.filtered;
+    this.sortProducts();
+    this.updateFilteredState();
     this.updateProduct(this.productList[this.defoultPosition]);
+  }
+
+  private sortProducts() {
+    this.productList = this.productList.sort(this.sortByPrice());
+  }
+
+  private updateFilteredState() {
+    this.filtered = !this.filtered;
   }
 
   private sortByPrice(): ((a: Producto, b: Producto) => number) | undefined {
