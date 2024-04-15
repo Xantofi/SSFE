@@ -6,6 +6,7 @@ import {
   SimpleChange,
 } from '@angular/core';
 import { Producto } from '../../interfaces/iProduct';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-principal',
@@ -19,13 +20,19 @@ export class PrincipalComponent {
   @Output() removeProduct = new EventEmitter<void>();
   @Output() sendRating = new EventEmitter<number>();
 
-  public changeFavoutiteState() {
+  constructor(private cartService: CartService) {}
+
+  changeFavoutiteState() {
     this.fav = !this.fav;
     this.updateFavouriteState();
   }
 
-  public onRemoveItem() {
+  onRemoveItem() {
     this.removeProduct.emit();
+  }
+
+  addToCart(product: Producto) {
+    this.cartService.addToCart(product);
   }
 
   private updateFavouriteState() {

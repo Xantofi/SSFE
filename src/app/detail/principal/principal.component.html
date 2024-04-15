@@ -28,10 +28,16 @@
     </p>
     <hr class="w-25" />
     <button
-      class="btn btn-secondary rounded-2 del-btn mb-3"
+      class="btn btn-secondary rounded-2 del-btn mb-3 me-4"
       (click)="onRemoveItem()"
     >
-      Delete Item
+      Delete product
+    </button>
+    <button
+      class="btn btn-secondary rounded-2 del-btn mb-3"
+      (click)="addToCart(actualProduct)"
+    >
+      Add to cart
     </button>
   </div>
 </div>
