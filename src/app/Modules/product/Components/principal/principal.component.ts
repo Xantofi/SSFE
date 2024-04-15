@@ -5,8 +5,8 @@ import {
   Output,
   SimpleChange,
 } from '@angular/core';
-import { Producto } from '../../interfaces/iProduct';
-import { CartService } from 'src/app/services/cart.service';
+import { Producto } from 'src/app/Interfaces/iProduct';
+import { CartService } from 'src/app/Services/Cart/cart.service';
 
 @Component({
   selector: 'app-principal',

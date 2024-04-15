@@ -1,0 +1,25 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ProductRoutingModule } from './product-routing.module';
+import { MainComponent } from './Components/main/main.component';
+import { AsideComponent } from './Components/aside/aside.component';
+import { PrincipalComponent } from './Components/principal/principal.component';
+import { ReviewsComponent } from './Components/reviews/reviews.component';
+import { SimProductComponent } from './Components/sim-product/sim-product.component';
+import { SimilarProductsComponent } from './Components/similar-products/similar-products.component';
+import { StarsComponent } from './Components/stars/stars.component';
+
+@NgModule({
+  declarations: [
+    MainComponent,
+    AsideComponent,
+    PrincipalComponent,
+    StarsComponent,
+    SimilarProductsComponent,
+    ReviewsComponent,
+    SimProductComponent,
+  ],
+  imports: [CommonModule, ProductRoutingModule],
+  exports: [MainComponent],
+})
+export class DetailModule {}

@@ -1,6 +1,6 @@
 import { Component, SimpleChanges } from '@angular/core';
-import { type Producto } from '../../interfaces/iProduct';
-import { ProductService } from 'src/app/services/product.service';
+import { type Producto } from '../../../../Interfaces/iProduct';
+import { ProductService } from 'src/app/Services/Product/product.service';
 
 @Component({
   selector: 'app-main',

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SubscriptionComponent } from '../about-us/subscription/subscription.component';
-import { MoreAboutUsComponent } from '../about-us/more-about-us/more-about-us.component';
-import { MoreInfoComponent } from '../about-us/more-info/more-info.component';
-import { AboutUsPageComponent } from '../about-us/about-us-page/about-us-page.component';
+import { SubscriptionComponent } from './Components/subscription/subscription.component';
+import { MoreAboutUsComponent } from './Components/more-about-us/more-about-us.component';
+import { MoreInfoComponent } from './Components/more-info/more-info.component';
+import { AboutUsPageComponent } from './Components/about-us-page/about-us-page.component';
 import { AboutUsRoutingModule } from './about-us-routing.module';
 
 @NgModule({
