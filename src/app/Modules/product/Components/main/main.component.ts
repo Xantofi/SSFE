@@ -54,7 +54,7 @@ export class MainComponent {
     this.updateProduct(this.productList[this.defoultPosition]);
   }
   private getProducts() {
-    this.productService.getProducts().subscribe((products) => {
+    this.productService.products$.subscribe((products) => {
       this.initializeProductData(products);
     });
   }

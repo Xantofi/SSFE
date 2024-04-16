@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <h1 class="my-5 text-center">Cesta de la compra</h1>
+  </div>
+  <div class="row">
+    <table class="w-75 my-auto mx-auto table table-striped">
+      <thead>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th class="text-end">
+          <button type="button" (click)="clearCart()" class="m-3">
+            Clear cart
+          </button>
+        </th>
+      </thead>
+      <tbody *ngFor="let product of cartProducts">
+        <tr>
+          <td>{{ product.product }}</td>
+          <td>{{ product.price }}</td>
+          <td class="text-center">
+            <button type="button" (click)="removeFromCart(product)">
+              Remove from cart
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

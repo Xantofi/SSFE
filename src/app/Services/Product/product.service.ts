@@ -11,22 +11,22 @@ export class ProductService {
 
   url = 'assets/data/products.json';
 
-  getProducts() {
+  /* getProducts() {
     return this.http.get<Producto[]>(this.url);
-  }
+  } */
 
-  /* private readonly products: BehaviorSubject<Producto[]> = new BehaviorSubject<
+  private readonly products: BehaviorSubject<Producto[]> = new BehaviorSubject<
     Producto[]
   >([]);
 
   public products$ = this.products.asObservable();
 
-  getProducts(): void {
+  getProducts() {
     this.http.get<Producto[]>(this.url).subscribe({
-      next: (data) => {
-        this.products.next(data);
+      next: (productList) => {
+        this.products.next(productList);
       },
-      error: (err) => {
+      error: () => {
         this.handleError('getProduct', []);
       },
     });
@@ -41,5 +41,5 @@ export class ProductService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
-  }*/
+  }
 }

@@ -8,6 +8,7 @@ import { ReviewsComponent } from './Components/reviews/reviews.component';
 import { SimProductComponent } from './Components/sim-product/sim-product.component';
 import { SimilarProductsComponent } from './Components/similar-products/similar-products.component';
 import { StarsComponent } from './Components/stars/stars.component';
+import { CartPageComponent } from './Components/cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { StarsComponent } from './Components/stars/stars.component';
     SimilarProductsComponent,
     ReviewsComponent,
     SimProductComponent,
+    CartPageComponent,
   ],
   imports: [CommonModule, ProductRoutingModule],
   exports: [MainComponent],
