@@ -13,8 +13,9 @@
 </button>
 <h4 class="mb-4 fst-italic">Products</h4>
 <div class="listado">
-  <ul *ngFor="let product of productList" class="ps-0">
+  <ul class="ps-0">
     <li
+      *ngFor="let product of productList"
       class="d-flex justify-content-between"
       (click)="onSelectedProduct(product)"
     >

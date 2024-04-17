@@ -17,7 +17,7 @@ export class StarsComponent {
     this.allStars = this.fillStars(this.rating);
   }
 
-  public ngOnChanges(changes: SimpleChange) {
+  public ngOnChanges() {
     this.calculateLevel();
     this.allStars = this.fillStars(this.rating);
   }

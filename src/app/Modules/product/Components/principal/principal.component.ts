@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  SimpleChange,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Producto } from 'src/app/Interfaces/iProduct';
 import { CartService } from 'src/app/Services/Cart/cart.service';
 
@@ -14,9 +8,9 @@ import { CartService } from 'src/app/Services/Cart/cart.service';
   styleUrls: ['./principal.component.scss'],
 })
 export class PrincipalComponent {
-  @Input() imageRoute: string = '';
   @Input() actualProduct!: Producto;
   @Input() fav!: boolean;
+  @Input() productInCart!: boolean;
   @Output() removeProduct = new EventEmitter<void>();
   @Output() sendRating = new EventEmitter<number>();
 
@@ -33,6 +27,7 @@ export class PrincipalComponent {
 
   addToCart(product: Producto) {
     this.cartService.addToCart(product);
+    this.productInCart = this.cartService.searchProductInCart(product);
   }
 
   private updateFavouriteState() {

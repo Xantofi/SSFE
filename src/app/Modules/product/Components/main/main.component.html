@@ -9,7 +9,6 @@
         (updateProduct)="updateProduct($event)"
       ></app-aside>
     </div>
-    <!--Posible adaptacion a ngClass-->
     <div
       class="col-8 px-0"
       [ngStyle]="{
@@ -21,8 +20,7 @@
     >
       <app-principal
         [actualProduct]="currentProduct"
-        [fav]="fav"
-        [imageRoute]="currentImageRoute"
+        [productInCart]="productInCart"
         (removeProduct)="removeProduct()"
       ></app-principal>
       <div class="border" *ngIf="currentProduct.similarProducts.length">

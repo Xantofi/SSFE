@@ -11,6 +11,7 @@ export class CartPageComponent {
   constructor(private cartService: CartService) {}
   cartProducts: Producto[] = [];
   ngOnInit() {
+    this.cartService.checkForStorage();
     this.updateList();
   }
 

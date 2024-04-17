@@ -1,6 +1,7 @@
 import { Component, SimpleChanges } from '@angular/core';
 import { type Producto } from '../../../../Interfaces/iProduct';
 import { ProductService } from 'src/app/Services/Product/product.service';
+import { CartService } from 'src/app/Services/Cart/cart.service';
 
 @Component({
   selector: 'app-main',
@@ -8,15 +9,18 @@ import { ProductService } from 'src/app/Services/Product/product.service';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent {
-  public productList: Producto[] = [];
+  productList: Producto[] = [];
   private unfilteredList: Producto[] = [];
   private defoultPosition = 0;
-  public currentProduct!: Producto;
-  public currentImageRoute = '';
-  public fav!: boolean;
-  public filtered = false;
+  currentProduct!: Producto;
+  productInCart!: boolean;
+  fav!: boolean;
+  filtered = false;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit() {
     this.getProducts();
@@ -40,11 +44,12 @@ export class MainComponent {
 
   updateProduct(product: Producto) {
     this.currentProduct = product;
-    this.currentImageRoute = product.image;
     this.fav = product.favourite;
+    this.productInCart = this.cartService.searchProductInCart(product);
   }
 
   removeProduct() {
+    this.cartService.removeAllInstances(this.currentProduct);
     this.productList = this.productList.filter(
       (product) => product.product !== this.currentProduct.product
     );
@@ -63,8 +68,10 @@ export class MainComponent {
     this.productList = products;
     this.unfilteredList = products;
     this.currentProduct = this.productList[this.defoultPosition];
-    this.currentImageRoute = this.currentProduct.image;
     this.fav = this.currentProduct.favourite;
+    this.productInCart = this.cartService.searchProductInCart(
+      this.currentProduct
+    );
   }
 
   private priceFilter(product: Producto) {

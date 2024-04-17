@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { type Producto } from '../../../../Interfaces/iProduct';
+import { CartService } from 'src/app/Services/Cart/cart.service';
 
 @Component({
   selector: 'app-aside',
@@ -13,15 +14,19 @@ export class AsideComponent {
   @Output() resetFilterBtnActive = new EventEmitter<void>();
   @Output() updateProduct = new EventEmitter<Producto>();
 
-  public onFilterBtnActive(): void {
+  productInCart!: boolean;
+
+  constructor(private cartService: CartService) {}
+
+  onFilterBtnActive(): void {
     this.filterBtnActive.emit();
   }
 
-  public onResetFilterBtnActive(): void {
+  onResetFilterBtnActive(): void {
     this.resetFilterBtnActive.emit();
   }
 
-  public onSelectedProduct(product: Producto): void {
+  onSelectedProduct(product: Producto): void {
     this.updateProduct.emit(product);
   }
 }
