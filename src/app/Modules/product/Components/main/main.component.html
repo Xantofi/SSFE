@@ -20,7 +20,6 @@
     >
       <app-principal
         [actualProduct]="currentProduct"
-        [productInCart]="productInCart"
         (removeProduct)="removeProduct()"
       ></app-principal>
       <div class="border" *ngIf="currentProduct.similarProducts.length">

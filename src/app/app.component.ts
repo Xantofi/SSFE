@@ -14,7 +14,7 @@ export class AppComponent {
   ) {}
 
   ngOnInit() {
-    this.cartService.checkForStorage();
     this.productService.getProducts();
+    this.cartService.checkForStorage();
   }
 }

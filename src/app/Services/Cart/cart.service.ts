@@ -21,7 +21,11 @@ export class CartService {
   checkForStorage() {
     const cartHasContent = this.products.length;
     if (!cartHasContent) {
-      this.products = JSON.parse(sessionStorage['cart']) ?? [];
+      if (sessionStorage['cart']) {
+        this.products = JSON.parse(sessionStorage['cart']);
+      } else {
+        this.products = [];
+      }
     }
   }
 
@@ -43,11 +47,9 @@ export class CartService {
     return this.products;
   }
 
-  searchProductInCart(product: Producto) {
-    return this.products.some((item) => item.product === product.product);
-    /* this.cartProducts.some(
-      (item) => item.product.id === this.selectedProduct?.id
-    ); */
+  isProductInCart(product: Producto) {
+    this.products = this.getProducts();
+    return this.products.some((prod) => prod.product === product.product);
   }
 
   private updateCart(products: Producto[]) {

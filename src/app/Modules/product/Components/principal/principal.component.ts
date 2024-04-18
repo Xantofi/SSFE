@@ -10,7 +10,6 @@ import { CartService } from 'src/app/Services/Cart/cart.service';
 export class PrincipalComponent {
   @Input() actualProduct!: Producto;
   @Input() fav!: boolean;
-  @Input() productInCart!: boolean;
   @Output() removeProduct = new EventEmitter<void>();
   @Output() sendRating = new EventEmitter<number>();
 
@@ -27,7 +26,15 @@ export class PrincipalComponent {
 
   addToCart(product: Producto) {
     this.cartService.addToCart(product);
-    this.productInCart = this.cartService.searchProductInCart(product);
+    /* this.productInCart = this.cartService.searchProductInCart(product); */
+  }
+
+  productInCartStyles() {
+    const productInCart = this.cartService.isProductInCart(this.actualProduct);
+    return {
+      'background-color': productInCart ? '#157500' : 'transparent',
+      color: productInCart ? 'white' : '',
+    };
   }
 
   private updateFavouriteState() {

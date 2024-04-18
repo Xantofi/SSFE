@@ -1,0 +1,156 @@
+<div class="container">
+  <h1 class="mt-5 fw-bold">Create new product</h1>
+  <p class="mt-2 mb-5">Use form to create new product</p>
+  <div
+    class="rounded-2 bg-body-secondary border border-3 border-secondary-subtle px-5"
+    *ngIf="!success"
+  >
+    <h4 class="fw-bold my-4">Product Info</h4>
+    <form
+      (ngSubmit)="saveProduct()"
+      [formGroup]="productForm"
+      class="form-group"
+    >
+      <div class="d-flex">
+        <div class="w-50">
+          <label for="productName" class="fw-bold mt-4">Product name</label>
+          <br />
+          <input
+            type="text"
+            formControlName="productName"
+            id="productName"
+            placeholder="Type name here"
+            class="w-75 rounded-2 border border-3 border-secondary-subtle"
+          />
+          <br />
+          <small
+            *ngIf="
+              productForm.controls['productName'].errors?.['required'] &&
+              productForm.controls['productName'].touched &&
+              startValidating
+            "
+            class="text-danger"
+            >Product name can not be empty.</small
+          >
+          <small
+            *ngIf="
+              productForm.controls['productName'].errors?.['minlength'] &&
+              productForm.controls['productName'].touched &&
+              startValidating
+            "
+            class="text-danger"
+            id="productNameError"
+            >Product name has to be composed of at least 4 letters.</small
+          >
+        </div>
+        <div class="w-50 mb-2">
+          <label for="productPrice" class="fw-bold mt-4">Product price</label>
+          <br />
+          <input
+            type="number"
+            formControlName="productPrice"
+            id="productPrice"
+            placeholder="Type price here"
+            class="w-75 rounded-2 border border-3 border-secondary-subtle"
+          />
+          <br />
+          <small
+            *ngIf="
+              productForm.controls['productPrice'].errors?.['required'] &&
+              productForm.controls['productPrice'].touched &&
+              startValidating
+            "
+            class="text-danger"
+            >Product price can not be empty.</small
+          >
+          <small
+            *ngIf="
+              productForm.controls['productPrice'].errors?.['min'] &&
+              productForm.controls['productPrice'].touched &&
+              startValidating
+            "
+            class="text-danger"
+            >Product price must be greater than 0.</small
+          >
+          <small
+            *ngIf="
+              productForm.controls['productPrice'].errors?.['max'] &&
+              productForm.controls['productPrice'].touched &&
+              startValidating
+            "
+            class="text-danger"
+            >Product price must be lesser than 999.</small
+          >
+        </div>
+      </div>
+      <input
+        type="checkbox"
+        name="Favorite"
+        class="mt-4"
+        (click)="changeFavState()"
+      />
+      <span class="fw-bold ms-1">Favorite</span>
+      <div>
+        <label for="productDescription" class="fw-bold mt-4">Description</label>
+        <br />
+        <input
+          type="text"
+          formControlName="productDescription"
+          placeholder="Type your message here"
+          id="productDescription"
+          class="w-100 rounded-2 border border-3 border-secondary-subtle pb-5 flex-wrap"
+        />
+        <br />
+        <small
+          *ngIf="
+            productForm.controls['productDescription'].errors?.['required'] &&
+            productForm.controls['productDescription'].touched &&
+            startValidating
+          "
+          class="text-danger"
+          >Product description can not be empty.</small
+        >
+        <small
+          *ngIf="
+            productForm.controls['productDescription'].errors?.['maxlength'] &&
+            productForm.controls['productDescription'].touched &&
+            startValidating
+          "
+          class="text-danger"
+          >Product description has a character limit of 350 letters.</small
+        >
+        <small
+          *ngIf="
+            productForm.controls['productDescription'].errors?.['noSpecialCharactersAllowed'] &&
+            productForm.controls['productDescription'].touched &&
+            startValidating
+          "
+          class="text-danger"
+          >No special characters are allowed in the product's
+          description.</small
+        >
+      </div>
+      <div class="text-end">
+        <input
+          type="submit"
+          value="Save"
+          class="btn btn-dark my-3 rounded-1 w-25"
+          (click)="startValidating = true"
+        />
+      </div>
+    </form>
+  </div>
+  <div
+    class="rounded-2 bg-body-secondary border border-3 border-secondary-subtle text-center py-5"
+    *ngIf="success"
+  >
+    <div>
+      <i class="bi bi-check-circle-fill big"></i>
+    </div>
+    <h3>Save success!</h3>
+    <p>new product added to list</p>
+    <button class="btn btn-dark my-3 rounded-1 w-25" routerLink="/home">
+      DONE
+    </button>
+  </div>
+</div>

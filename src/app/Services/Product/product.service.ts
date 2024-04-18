@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Producto } from '../../Interfaces/iProduct';
-import { BehaviorSubject, Observable, catchError, of } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -29,6 +29,12 @@ export class ProductService {
       error: () => {
         this.handleError('getProduct', []);
       },
+    });
+  }
+
+  addProduct(product: Producto) {
+    this.products.subscribe((productList) => {
+      productList.push(product);
     });
   }
 

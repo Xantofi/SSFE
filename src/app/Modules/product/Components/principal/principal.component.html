@@ -1,10 +1,4 @@
-<div
-  class="border d-flex"
-  [ngStyle]="{
-    'background-color': productInCart ? '#157500' : 'transparent',
-    color: productInCart ? 'white' : ''
-  }"
->
+<div class="border d-flex" [ngStyle]="productInCartStyles()">
   <img
     [src]="actualProduct.image"
     [alt]="actualProduct.product"

@@ -13,7 +13,6 @@ export class MainComponent {
   private unfilteredList: Producto[] = [];
   private defoultPosition = 0;
   currentProduct!: Producto;
-  productInCart!: boolean;
   fav!: boolean;
   filtered = false;
 
@@ -45,7 +44,6 @@ export class MainComponent {
   updateProduct(product: Producto) {
     this.currentProduct = product;
     this.fav = product.favourite;
-    this.productInCart = this.cartService.searchProductInCart(product);
   }
 
   removeProduct() {
@@ -69,9 +67,6 @@ export class MainComponent {
     this.unfilteredList = products;
     this.currentProduct = this.productList[this.defoultPosition];
     this.fav = this.currentProduct.favourite;
-    this.productInCart = this.cartService.searchProductInCart(
-      this.currentProduct
-    );
   }
 
   private priceFilter(product: Producto) {
