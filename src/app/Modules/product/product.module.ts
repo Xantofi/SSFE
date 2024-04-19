@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductRoutingModule } from './product-routing.module';
-import { MainComponent } from './Components/main/main.component';
+import { HomePageComponent } from './Components/home-page/home-page.component';
 import { AsideComponent } from './Components/aside/aside.component';
 import { PrincipalComponent } from './Components/principal/principal.component';
 import { ReviewsComponent } from './Components/reviews/reviews.component';
@@ -12,7 +12,7 @@ import { CartPageComponent } from './Components/cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
-    MainComponent,
+    HomePageComponent,
     AsideComponent,
     PrincipalComponent,
     StarsComponent,
@@ -22,6 +22,6 @@ import { CartPageComponent } from './Components/cart-page/cart-page.component';
     CartPageComponent,
   ],
   imports: [CommonModule, ProductRoutingModule],
-  exports: [MainComponent],
+  exports: [HomePageComponent],
 })
-export class DetailModule {}
+export class ProductModule {}

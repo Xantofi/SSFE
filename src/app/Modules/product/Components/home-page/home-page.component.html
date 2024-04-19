@@ -9,25 +9,17 @@
         (updateProduct)="updateProduct($event)"
       ></app-aside>
     </div>
-    <div
-      class="col-8 px-0"
-      [ngStyle]="{
-        'background-color': currentProduct.favourite
-          ? '#505050'
-          : 'transparent',
-        color: currentProduct.favourite ? 'white' : 'black'
-      }"
-    >
+    <div class="col-8 px-0" [ngStyle]="productIsFavoriteStyle()">
       <app-principal
         [actualProduct]="currentProduct"
         (removeProduct)="removeProduct()"
       ></app-principal>
-      <div class="border" *ngIf="currentProduct.similarProducts.length">
+      <div class="border" *ngIf="hasSimilarProducts()">
         <app-similar-products
           [actualProduct]="currentProduct"
         ></app-similar-products>
       </div>
-      <div class="border" *ngIf="currentProduct.reviews?.length">
+      <div class="border" *ngIf="hasReviews()">
         <app-reviews [actualProduct]="currentProduct"></app-reviews>
       </div>
     </div>

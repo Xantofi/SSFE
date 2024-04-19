@@ -6,8 +6,8 @@ import { CustomValidators } from 'src/app/Validators/CustomValidators';
 
 @Component({
   selector: 'app-administration',
-  templateUrl: './administration.component.html',
-  styleUrls: ['./administration.component.scss'],
+  templateUrl: './new-product.component.html',
+  styleUrls: ['./new-product.component.scss'],
 })
 export class AdministrationComponent {
   productForm: FormGroup = this.formBuilder.group({

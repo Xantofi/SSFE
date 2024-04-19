@@ -9,7 +9,9 @@ import { CartService } from 'src/app/Services/Cart/cart.service';
 })
 export class CartPageComponent {
   constructor(private cartService: CartService) {}
+
   cartProducts: Producto[] = [];
+
   ngOnInit() {
     this.updateList();
   }
@@ -18,10 +20,12 @@ export class CartPageComponent {
     this.cartService.clearCart();
     this.updateList();
   }
+
   removeFromCart(product: Producto) {
     this.cartService.removeFromCart(product);
     this.updateList();
   }
+
   private updateList() {
     this.cartProducts = this.cartService.getProducts();
   }

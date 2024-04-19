@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdministrationComponent } from './administration.component';
+import { AdministrationComponent } from './new-product.component';
 
 describe('AdministrationComponent', () => {
   let component: AdministrationComponent;
@@ -8,7 +8,7 @@ describe('AdministrationComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AdministrationComponent]
+      declarations: [AdministrationComponent],
     });
     fixture = TestBed.createComponent(AdministrationComponent);
     component = fixture.componentInstance;

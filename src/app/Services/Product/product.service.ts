@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Producto } from '../../Interfaces/iProduct';
+import { Producto } from 'src/app/Interfaces/iProduct';
 import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
 
 @Injectable({
@@ -10,10 +10,6 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   url = 'assets/data/products.json';
-
-  /* getProducts() {
-    return this.http.get<Producto[]>(this.url);
-  } */
 
   private readonly products: BehaviorSubject<Producto[]> = new BehaviorSubject<
     Producto[]
@@ -44,7 +40,6 @@ export class ProductService {
 
       console.log(`${operation} failed: ${error.message}`);
 
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }

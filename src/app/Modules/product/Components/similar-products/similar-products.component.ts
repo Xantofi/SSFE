@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { type Producto } from '../../../../Interfaces/iProduct';
+import { type Producto } from 'src/app/Interfaces/iProduct';
 
 @Component({
   selector: 'app-similar-products',

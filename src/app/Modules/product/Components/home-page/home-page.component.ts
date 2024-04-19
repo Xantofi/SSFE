@@ -1,14 +1,14 @@
-import { Component, SimpleChanges } from '@angular/core';
-import { type Producto } from '../../../../Interfaces/iProduct';
+import { Component } from '@angular/core';
+import { type Producto } from 'src/app/Interfaces/iProduct';
 import { ProductService } from 'src/app/Services/Product/product.service';
 import { CartService } from 'src/app/Services/Cart/cart.service';
 
 @Component({
   selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss'],
+  templateUrl: './home-page.component.html',
+  styleUrls: ['./home-page.component.scss'],
 })
-export class MainComponent {
+export class HomePageComponent {
   productList: Producto[] = [];
   private unfilteredList: Producto[] = [];
   private defoultPosition = 0;
@@ -56,16 +56,45 @@ export class MainComponent {
     );
     this.updateProduct(this.productList[this.defoultPosition]);
   }
+
+  productIsFavoriteStyle() {
+    if (this.productList.length) {
+      return {
+        'background-color': this.currentProduct.favourite
+          ? '#505050'
+          : 'transparent',
+        color: this.currentProduct.favourite ? 'white' : 'black',
+      };
+    }
+    return;
+  }
+
+  hasSimilarProducts() {
+    if (this.productList.length) {
+      return this.currentProduct.similarProducts.length;
+    }
+    return;
+  }
+
+  hasReviews() {
+    if (this.productList.length) {
+      return this.currentProduct.reviews?.length;
+    }
+    return;
+  }
+
   private getProducts() {
     this.productService.products$.subscribe((products) => {
-      this.initializeProductData(products);
+      if (products.length) {
+        this.initializeProductData(products);
+      }
     });
   }
 
   private initializeProductData(products: Producto[]) {
     this.productList = products;
     this.unfilteredList = products;
-    this.currentProduct = this.productList[this.defoultPosition];
+    this.currentProduct = products[this.defoultPosition];
     this.fav = this.currentProduct.favourite;
   }
 

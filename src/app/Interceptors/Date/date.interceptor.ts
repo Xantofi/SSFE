@@ -11,8 +11,6 @@ import * as moment from 'moment';
 
 @Injectable()
 export class DateInterceptor implements HttpInterceptor {
-  constructor() {}
-
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
@@ -31,19 +29,19 @@ export class DateInterceptor implements HttpInterceptor {
       })
     );
   }
-  convertToDate(newBody: object | null) {
+  private convertToDate(newBody: object | null) {
     if (typeof newBody === 'object' && newBody !== null) {
       const casted = newBody as { [key: string]: unknown };
-      for (const prod of Object.keys(casted)) {
-        const product = casted[prod];
-        if (typeof product === 'string' && prod === 'date') {
-          const newDate = moment(product).format('DD/MM/YYYY hh:mm');
-          casted[prod] = newDate;
-        } else if (typeof product === 'object' && product !== null) {
-          this.convertToDate(product);
+      for (const key of Object.keys(casted)) {
+        const value = casted[key];
+        if (typeof value === 'string' && key === 'date') {
+          const newDate = moment(value).format('DD/MM/YYYY hh:mm');
+          casted[key] = newDate;
+        } else if (typeof value === 'object' && value !== null) {
+          this.convertToDate(value);
         }
       }
-      return null;
+      return;
     } else {
       return newBody;
     }

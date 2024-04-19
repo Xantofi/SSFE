@@ -26,7 +26,7 @@ export class PrincipalComponent {
 
   addToCart(product: Producto) {
     this.cartService.addToCart(product);
-    /* this.productInCart = this.cartService.searchProductInCart(product); */
+    /* this.productInCart = this.cartService.searchProductInCart(product); NEVERMORE*/
   }
 
   productInCartStyles() {
